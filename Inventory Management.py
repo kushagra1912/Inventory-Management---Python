@@ -73,7 +73,10 @@ def checkValidity():
     global cur
     cur.execute('select max(ID) from pharma')
     for x in cur:
-            count = x[0] + 1
+        try:
+                count = x[0] + 1
+        except:
+                count = 1  
     name,price,quan,cat,dis = get()
     try:
        cur.execute("insert into pharma values("+str(count)+",'"+name+"',"+str(price)+","+str(quan)+",'"+cat+"',"+str(dis)+")")
@@ -100,7 +103,10 @@ def addItem():
         clear()
         cur.execute('select max(ID) from pharma')
         for x in cur:
-            count = x[0] + 1
+            try:
+                count = x[0] + 1
+            except:
+                count = 1
         cur.execute("insert into pharma values("+str(count)+",'"+name+"',"+str(price)+","+str(quan)+",'"+cat+"',"+str(dis)+")")
         db.commit()
         messagebox.showinfo("Title", 
