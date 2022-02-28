@@ -1,8 +1,9 @@
 from tkinter import *
 from tkinter import messagebox
 import mysql.connector as sql
+import getpass
 
-passKey = input("Please input the password for your database: ")
+passKey = getpass.getpass("Please input the password for your database: ")
 
 # First Initialization
 try:
